@@ -14,28 +14,22 @@ musicBtn?.addEventListener('click', () => {
   musicBtn.textContent = musicBtn.classList.contains('playing') ? '♫' : '♪';
 });
 
-// Target date: Midnight July 31, 2026 (Local Time)
-const birthdayDate = new Date('2026-07-31T00:00:00').getTime();
-
-const $ = (selector) => document.querySelector(selector);
-
+const birthdayDate = new Date('2027-05-24T00:00:00').getTime();
 function updateCountdown() {
   const countdown = $('#countdown');
   if (!countdown) return;
 
   const difference = Math.max(birthdayDate - Date.now(), 0);
+  const days = Math.floor(difference / 86400000);
+  const hours = Math.floor((difference % 86400000) / 3600000);
+  const minutes = Math.floor((difference % 3600000) / 60000);
+  const seconds = Math.floor((difference % 60000) / 1000);
 
-  const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-  if ($('#days')) $('#days').textContent = String(days).padStart(2, '0');
-  if ($('#hours')) $('#hours').textContent = String(hours).padStart(2, '0');
-  if ($('#mins')) $('#mins').textContent = String(minutes).padStart(2, '0');
-  if ($('#secs')) $('#secs').textContent = String(seconds).padStart(2, '0');
+  $('#days').textContent = String(days).padStart(2, '0');
+  $('#hours').textContent = String(hours).padStart(2, '0');
+  $('#mins').textContent = String(minutes).padStart(2, '0');
+  $('#secs').textContent = String(seconds).padStart(2, '0');
 }
-
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
