@@ -213,7 +213,7 @@ cutCakeBtn?.addEventListener('click', async () => {
   cake.classList.add('sliced');
   await wait(900);
 
-  cakeStageText.textContent = 'first slice for my Babuuu 🎉';
+  cakeStageText.textContent = 'first slice for my chinuu 🎉';
   cutCakeBtn.textContent = 'Cake Cut 🎉';
 
   if (typeof confetti === 'function') {
