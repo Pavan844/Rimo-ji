@@ -14,22 +14,28 @@ musicBtn?.addEventListener('click', () => {
   musicBtn.textContent = musicBtn.classList.contains('playing') ? '♫' : '♪';
 });
 
+// Target date: Midnight July 31, 2026 (Local Time)
 const birthdayDate = new Date('2026-07-31T00:00:00').getTime();
+
+const $ = (selector) => document.querySelector(selector);
+
 function updateCountdown() {
   const countdown = $('#countdown');
   if (!countdown) return;
 
   const difference = Math.max(birthdayDate - Date.now(), 0);
-  const days = Math.floor(difference / 86400000);
-  const hours = Math.floor((difference % 86400000) / 3600000);
-  const minutes = Math.floor((difference % 3600000) / 60000);
-  const seconds = Math.floor((difference % 60000) / 1000);
 
-  $('#days').textContent = String(days).padStart(2, '0');
-  $('#hours').textContent = String(hours).padStart(2, '0');
-  $('#mins').textContent = String(minutes).padStart(2, '0');
-  $('#secs').textContent = String(seconds).padStart(2, '0');
+  const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+  if ($('#days')) $('#days').textContent = String(days).padStart(2, '0');
+  if ($('#hours')) $('#hours').textContent = String(hours).padStart(2, '0');
+  if ($('#mins')) $('#mins').textContent = String(minutes).padStart(2, '0');
+  if ($('#secs')) $('#secs').textContent = String(seconds).padStart(2, '0');
 }
+
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
@@ -168,7 +174,7 @@ const envelope = $('#envelope');
 const letterText = `you are one of those rare people who make the world feel gentler just by being in it. Your presence brings a kind of warmth, peace, and beauty that words can never fully explain.
 On your birthday, I just want you to know how deeply you are loved, not just today, but every single day. You deserve happiness that feels real, dreams that slowly turn into reality, and moments so beautiful that your heart wants to keep them forever.
 I hope this year gives you soft mornings, peaceful nights, unexpected smiles, and every little thing your soul has been waiting for.
-Happy Birthday chinnuuu You are special in ways you may never fully realize, and you deserve magic, love, and endless happiness in every chapter of your life. I Love You🫶`;
+Happy Birthday chinnuuu You are special in ways you may never fully realize, and you deserve magic, love, and endless happiness in every chapter of your life. My Love🫶`;
 let hasTypedLetter = false;
 
 envelope?.addEventListener('click', () => {
