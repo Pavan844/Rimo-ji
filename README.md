@@ -5,9 +5,4 @@ This project is perfect for wishing your **best friend, girlfriend, boyfriend, s
 
 Instead of sending a simple birthday message, you can send a personalised website filled with love, animations, memories, wishes, and surprises. 💖
 
----
-
-## ✨ Live Demo
-
-🔗 **Live Website:**  
-(https://nikitayadav19.github.io/happybirthdaybf/)
+)
