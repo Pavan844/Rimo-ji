@@ -139,7 +139,7 @@ const reasons = [
 const reasonGrid = $('#reasonGrid');
 if (reasonGrid) {
   const imageFolder = reasonGrid.dataset.imageFolder || 'assets';
-  const reasonImages = Array.from({ length: 100 }, (_, index) => `${imageFolder}/${index + 1}.jpg`);
+  const reasonImages = Array.from({ length: 70 }, (_, index) => `${imageFolder}/${index + 1}.jpg`);
 
   reasonGrid.innerHTML = reasons
     .map((reason, index) => {
