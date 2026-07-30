@@ -139,11 +139,18 @@ const reasons = [
 const reasonGrid = $('#reasonGrid');
 if (reasonGrid) {
   const imageFolder = reasonGrid.dataset.imageFolder || 'assets';
-  const reasonImages = Array.from({ length: 70 }, (_, index) => `${imageFolder}/${index + 1}.jpg`);
+  // Dynamically uses 86 from data-image-count
+  const imageCount = parseInt(reasonGrid.dataset.imageCount, 10) || 86; 
+
+  const reasonImages = Array.from(
+    { length: imageCount }, 
+    (_, index) => `${imageFolder}/${index + 1}.jpg`
+  );
 
   reasonGrid.innerHTML = reasons
     .map((reason, index) => {
-      const image = reasonImages[index % reasonImages.length];
+      // Automatically loops back to 1.jpg after 86.jpg
+      const image = reasonImages[index % reasonImages.length]; 
       return `
       <article class="reason-card reveal" tabindex="0">
         <div class="reason-inner">
@@ -159,7 +166,6 @@ if (reasonGrid) {
     })
     .join('');
 }
-
 $('#randomReasonBtn')?.addEventListener('click', () => {
   $('#randomReason').textContent = reasons[Math.floor(Math.random() * reasons.length)];
 });
